@@ -55,16 +55,18 @@ function isValidOperation() {
 }
 
 function btnClickHandler(e) {
+  const screenText = document.getElementById('screen-text');
   const value = e.target.textContent;
   if (isValidNumber(value)) {
     userInput.push(Number(value));
+    screenText.innerText = value;
   } else if (isValidOperator(value)) {
     userInput.push(value);
   }
 
   if (isValidOperation()) {
     const result = operate(userInput[1], userInput[0], userInput[2]);
-    document.getElementById('screen-text').innerText = result;
+    screenText.innerText = result;
     userInput = [];
   }
 }
