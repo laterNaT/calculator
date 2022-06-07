@@ -63,7 +63,6 @@ function adjustOperand(value) {
   }
 
   const operatorIndex = userInput.findIndex(e => isValidOperator(e));
-  // TODO: check if operatorIndex is length - 1 ?
 
   if (operatorIndex === -1) {
     // no operator, just add the two numbers
@@ -131,6 +130,23 @@ function handleNumberInput(value) {
   }
 }
 
+function deleteInput() {
+  // removes the number to the far most right
+  if (userInput.length < 1) {
+    return;
+  }
+
+  if (userInput.length === 1 && userInput[0].length > 1) {
+    userInput[0] = userInput[0].substring(0,userInput[0].length - 1);
+    setScreenText(userInput[0]);
+  }
+
+  if (userInput.length === 3 && userInput[2].length > 1) {
+    userInput[2] = userInput[2].substring(0,userInput[2].length - 1);
+    setScreenText(userInput[2]);
+  }
+}
+
 function btnClickHandler(e) {
   const value = e.target.textContent;
 
@@ -153,11 +169,12 @@ function btnClickHandler(e) {
   }
 
   if (value === 'CLEAR') {
-    // clear inputs
+    userInput = [];
+    setScreenText(0);
   }
 
   if (value === 'DEL') {
-    // delete value to right
+    deleteInput();
   }
 }
 
