@@ -148,17 +148,18 @@ function deleteInput() {
 }
 
 function btnClickHandler(e) {
+  const screenHistoryText = document.getElementById('screen-history-text');
   const value = e.target.textContent;
 
   if (isValidOperator(value)) {
     handleOperatorInput(value);
-    document.getElementById('screen-history-text').innerText = userInput.join(' ');
+    screenHistoryText.innerText = userInput.join(' ');
     return;
   }
 
   if (isValidNumber(value)) {
     handleNumberInput(value);
-    document.getElementById('screen-history-text').innerText = userInput.join(' ');
+    screenHistoryText.innerText = userInput.join(' ');
     return;
   }
 
@@ -172,7 +173,7 @@ function btnClickHandler(e) {
 
   if (value === 'CLEAR') {
     userInput = [];
-    document.getElementById('screen-history-text').innerText = '';
+    screenHistoryText.innerText = '';
     setScreenText(0);
   }
 
