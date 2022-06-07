@@ -92,42 +92,73 @@ function operatorExists() {
   return isValidOperator(userInput[userInput.length - 1]);
 }
 
-function btnClickHandler(e) {
-  const value = e.target.textContent;
-
-  if (isValidOperator(value) && userInput.length === 0) {
+function handleOperatorInput(value) {
+  if (userInput.length === 0) {
+    // operator without operand not allowed
     return;
   }
 
-  if (isValidOperator(value) && operatorExists()) {
+  if (operatorExists()) {
+    // multiple operators now allowed,
     // replace the latest operator with new operator
     userInput[userInput.length - 1] = value;
     return;
   }
 
-  if (value === '=' && userInput.length === 3) {
-    userInput.push(value);
-    if (isValidOperation()) {
-      const result = operate(userInput[1], Number(userInput[0]), Number(userInput[2]));
-      setScreenText(result);
-      userInput = [result.toString()];
-    }
-    console.log(userInput);
+  userInput.push(value);
+  if (isValidOperation()) {
+    const result = operate(userInput[1], Number(userInput[0]), Number(userInput[2]));
+    setScreenText(result);
+    userInput = [result.toString(), value];
+  }
+}
+
+function evaluateExpression() {
+  if (userInput.length === 3
+    && isValidNumber(userInput[0])
+    && isValidOperator(userInput[1])
+    && isValidNumber(userInput[2])) {
+    const result = operate(userInput[1], Number(userInput[0]), Number(userInput[2]));
+    setScreenText(result);
+    userInput = [result.toString()];
+  }
+}
+
+function handleNumberInput(value) {
+  if (isValidNumber(value)) {
+    const operand = adjustOperand(value);
+    setScreenText(operand);
+  }
+}
+
+function btnClickHandler(e) {
+  const value = e.target.textContent;
+
+  if (isValidOperator(value)) {
+    handleOperatorInput(value);
     return;
   }
 
   if (isValidNumber(value)) {
-    const operand = adjustOperand(value);
-    setScreenText(operand);
-  } else if (isValidOperator(value)) {
-    userInput.push(value);
-    if (isValidOperation()) {
-      const result = operate(userInput[1], Number(userInput[0]), Number(userInput[2]));
-      setScreenText(result);
-      userInput = [result.toString(), value];
-    }
+    handleNumberInput(value);
+    return;
   }
-  console.log(userInput);
+
+  if (value === '=') {
+    evaluateExpression();
+  }
+
+  if (value === '.') {
+    // handle floats
+  }
+
+  if (value === 'CLEAR') {
+    // clear inputs
+  }
+
+  if (value === 'DEL') {
+    // delete value to right
+  }
 }
 
 const btns = document.querySelectorAll('.buttons button');
