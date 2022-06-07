@@ -152,11 +152,13 @@ function btnClickHandler(e) {
 
   if (isValidOperator(value)) {
     handleOperatorInput(value);
+    document.getElementById('screen-history-text').innerText = userInput.join(' ');
     return;
   }
 
   if (isValidNumber(value)) {
     handleNumberInput(value);
+    document.getElementById('screen-history-text').innerText = userInput.join(' ');
     return;
   }
 
@@ -170,6 +172,7 @@ function btnClickHandler(e) {
 
   if (value === 'CLEAR') {
     userInput = [];
+    document.getElementById('screen-history-text').innerText = '';
     setScreenText(0);
   }
 
