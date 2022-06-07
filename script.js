@@ -38,7 +38,7 @@ function operate(operator, num1, num2) {
 
 function isValidOperator(operator) {
   if (typeof operator === 'string') {
-    return operator.match(/[/X+-]/) != null;
+    return operator.match(/[/X+-](?!\d)/) != null;
   }
   return false;
 }
@@ -97,8 +97,8 @@ function handleOperatorInput(value) {
     return;
   }
 
-  if (operatorExists()) {
-    // multiple operators now allowed,
+  if (userInput.length === 2 && isValidOperator(userInput[1])) {
+    // multiple operators not allowed,
     // replace the latest operator with new operator
     userInput[userInput.length - 1] = value;
     return;
@@ -136,13 +136,23 @@ function deleteInput() {
     return;
   }
 
-  if (userInput.length === 1 && userInput[0].length > 1) {
-    userInput[0] = userInput[0].substring(0,userInput[0].length - 1);
+  if (userInput.length === 1) { // delete from left operand
+    if (userInput[0].length === 1) {
+      userInput.pop();
+      setScreenText('');
+      return;
+    }
+    userInput[0] = userInput[0].substring(0, userInput[0].length - 1);
     setScreenText(userInput[0]);
   }
 
-  if (userInput.length === 3 && userInput[2].length > 1) {
-    userInput[2] = userInput[2].substring(0,userInput[2].length - 1);
+  if (userInput.length === 3) { // delete from right operand
+    if (userInput[2].length === 1) {
+      userInput.pop();
+      setScreenText('');
+      return;
+    }
+    userInput[2] = userInput[2].substring(0, userInput[2].length - 1);
     setScreenText(userInput[2]);
   }
 }
