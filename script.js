@@ -209,6 +209,7 @@ function logicHandler(value) {
 
   if (value === 'DEL') {
     deleteInput();
+    setScreenHistoryText();
   }
 }
 
