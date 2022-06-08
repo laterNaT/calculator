@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Quicksand:wght@300&display=swap');
 
 body {
     font-family: 'Kdam Thmor Pro', sans-serif;
@@ -9,12 +9,15 @@ main {
     height: 100%;
     justify-content: center;
     align-items: center;
+    background-color: bisque;
+    flex-direction: column;
 }
 
 .calculator {
     border: 1px solid black;
     padding: 1em;
     border-radius: 1em;
+    background-color: ghostwhite;
 }
 
 .screen {
@@ -25,7 +28,7 @@ main {
     padding: 0.5em;
     border-radius: 5px;
     margin-bottom: 0.5em;
-    background-color: darkgray;
+    border: 1px solid black;
     min-height: 104px;
     max-width: 400px;
 }
@@ -61,4 +64,25 @@ main {
 
 .btn {
     flex: 1;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#clear {
+    background-color: #b15454;
+}
+
+#delete {
+    background-color: #bf6d6d;
+}
+
+.operator {
+    background-color: beige;
+}
+
+#info-text {
+    font-family: 'Quicksand', sans-serif;
+    margin-top: 5em;
+    font-size: 0.8em;
 }
