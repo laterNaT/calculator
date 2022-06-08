@@ -157,6 +157,20 @@ function deleteInput() {
   }
 }
 
+function convertToFloat() {
+  if (userInput.length === 1) {
+    if (!userInput[0].includes('.')) {
+      userInput[0] += '.';
+      setScreenText(userInput[0]);
+    }
+  } else if (userInput.length === 3) {
+    if (!userInput[2].includes('.')) {
+      userInput[2] += '.';
+      setScreenText(userInput[0]);
+    }
+  }
+}
+
 function btnClickHandler(e) {
   const screenHistoryText = document.getElementById('screen-history-text');
   const value = e.target.textContent;
@@ -178,7 +192,7 @@ function btnClickHandler(e) {
   }
 
   if (value === '.') {
-    // handle floats
+    convertToFloat();
   }
 
   if (value === 'CLEAR') {
