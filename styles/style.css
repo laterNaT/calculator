@@ -27,6 +27,7 @@ main {
     margin-bottom: 0.5em;
     background-color: darkgray;
     min-height: 104px;
+    max-width: 400px;
 }
 
 #screen-history-text {
