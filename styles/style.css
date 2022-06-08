@@ -90,3 +90,35 @@ main {
     margin-top: 5em;
     font-size: 0.8em;
 }
+
+.container {
+    display: flex;
+}
+
+#log {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    margin-left: 20px;
+    padding: 10px 40px;
+    border: 1px solid black;
+    width: 300px;
+}
+
+#log > ul {
+    flex: 1;
+}
+
+#empty-log-btn {
+    border-radius: 5px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+#delete-icon {
+    color: red;
+}

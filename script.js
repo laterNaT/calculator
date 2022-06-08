@@ -96,6 +96,14 @@ function operatorExists() {
   return isValidOperator(userInput[userInput.length - 1]);
 }
 
+function appendToLog(operation, result) {
+  const p = document.createElement('li');
+  p.innerText = operation.join(' ') + ' = ' + result;
+  const log = document.getElementById('log').querySelector('ul');
+  log.appendChild(p);
+  userInput = [result.toString()];
+}
+
 function handleOperatorInput(value) {
   if (userInput.length === 0) {
     // operator without operand not allowed
@@ -113,6 +121,7 @@ function handleOperatorInput(value) {
   if (isValidOperation()) {
     const result = operate(userInput[1], Number(userInput[0]), Number(userInput[2]));
     setScreenText(result);
+    appendToLog(userInput.slice(0, -1), result);
     userInput = [result.toString(), value];
   }
 }
@@ -129,6 +138,7 @@ function evaluateExpression() {
       return;
     }
     setScreenText(result);
+    appendToLog(userInput, result);
     userInput = [result.toString()];
   }
 }
@@ -270,4 +280,10 @@ document.addEventListener('keydown', (e) => {
     default:
       logicHandler(e.key);
   }
+});
+
+const emptyLogBtn = document.getElementById('empty-log-btn');
+emptyLogBtn.addEventListener('click', () => {
+  const log = document.getElementById('log').querySelector('ul');
+  log.replaceChildren();
 });

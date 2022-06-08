@@ -11,50 +11,65 @@
 <body>
 
 <main>
-    <div class="calculator">
-        <div class="screen">
-            <p id="screen-history-text"></p>
-            <p id="screen-text">0</p>
+    <div class="container">
+        <div class="calculator">
+            <div class="screen">
+                <p id="screen-history-text"></p>
+                <p id="screen-text">0</p>
+            </div>
+            <div class="buttons">
+                <div class="div1">
+                    <button class="btn" id="clear">CLEAR</button>
+                </div>
+                <div class="div2">
+                    <button class="btn" id="delete">DEL</button>
+                </div>
+                <div class="div3">
+                    <button class="btn operator">/</button>
+                </div>
+                <div class="div4">
+                    <button class="btn">7</button>
+                    <button class="btn">8</button>
+                    <button class="btn">9</button>
+                    <button class="btn operator">X</button>
+                </div>
+                <div class="div5">
+                    <button class="btn">4</button>
+                    <button class="btn">5</button>
+                    <button class="btn">6</button>
+                    <button class="btn operator">-</button>
+                </div>
+                <div class="div6">
+                    <button class="btn">1</button>
+                    <button class="btn">2</button>
+                    <button class="btn">3</button>
+                    <button class="btn operator">+</button>
+                </div>
+                <div class="div7">
+                    <button class="btn">0</button>
+                </div>
+                <div class="div8">
+                    <button class="btn operator">.</button>
+                </div>
+                <div class="div9">
+                    <button class="btn operator">=</button>
+                </div>
+            </div>
         </div>
-        <div class="buttons">
-            <div class="div1">
-                <button class="btn" id="clear">CLEAR</button>
-            </div>
-            <div class="div2">
-                <button class="btn" id="delete">DEL</button>
-            </div>
-            <div class="div3">
-                <button class="btn operator">/</button>
-            </div>
-            <div class="div4">
-                <button class="btn">7</button>
-                <button class="btn">8</button>
-                <button class="btn">9</button>
-                <button class="btn operator">X</button>
-            </div>
-            <div class="div5">
-                <button class="btn">4</button>
-                <button class="btn">5</button>
-                <button class="btn">6</button>
-                <button class="btn operator">-</button>
-            </div>
-            <div class="div6">
-                <button class="btn">1</button>
-                <button class="btn">2</button>
-                <button class="btn">3</button>
-                <button class="btn operator">+</button>
-            </div>
-            <div class="div7">
-                <button class="btn">0</button>
-            </div>
-            <div class="div8">
-                <button class="btn operator">.</button>
-            </div>
-            <div class="div9">
-                <button class="btn operator">=</button>
-            </div>
+        <div id="log">
+            <ul>
+            </ul>
+            <button id="empty-log-btn">
+                <svg id="delete-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                </svg>
+                <span>Empty</span>
+            </button>
+        </div>
     </div>
-    </div>
+
+
     <div id="info-text">
         <p>Psst... Did you know that you can also use your keyboard as input?</p>
     </div>
