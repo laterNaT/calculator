@@ -123,6 +123,11 @@ function evaluateExpression() {
     && isValidOperator(userInput[1])
     && isValidNumber(userInput[2])) {
     const result = operate(userInput[1], Number(userInput[0]), Number(userInput[2]));
+    if (userInput[1] === '/' && userInput[2] === '0') {
+      setScreenText(`Error ${result.toString()}. Input reset.`);
+      userInput = [];
+      return;
+    }
     setScreenText(result);
     userInput = [result.toString()];
   }
