@@ -69,6 +69,10 @@ main {
     border-radius: 5px;
 }
 
+.btn-active {
+    box-shadow: inset 0px 0px 10px 0px #aba8a8;
+}
+
 #clear {
     background-color: #b15454;
 }

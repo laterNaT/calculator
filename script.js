@@ -221,6 +221,10 @@ function logicHandler(value) {
 function btnClickHandler(e) {
   const value = e.target.textContent;
   logicHandler(value);
+  e.target.classList.add('btn-active');
+  setTimeout(() => {
+    e.target.classList.remove('btn-active');
+  }, 100);
 }
 
 const btns = document.querySelectorAll('.buttons button');
@@ -228,7 +232,28 @@ btns.forEach((btn) => {
   btn.addEventListener('click', btnClickHandler);
 });
 
+const btnsText = Array.from(btns).map(btn => {
+  if (btn.innerHTML === 'DEL') {
+    return 'Backspace';
+  }
+  if (btn.innerHTML === '=') {
+    return 'Enter';
+  }
+  if (btn.innerHTML === 'X') {
+    return '*';
+  }
+  return btn.innerHTML;
+});
+
 document.addEventListener('keydown', (e) => {
+  const keyIdx = btnsText.indexOf(e.key === ',' ? '.' : e.key);
+  if (keyIdx !== -1) {
+    btns[keyIdx].classList.add('btn-active');
+    setTimeout(() => {
+      btns[keyIdx].classList.remove('btn-active');
+    }, 100);
+  }
+
   switch (e.key) {
     case 'Enter':
       logicHandler('=');
