@@ -87,6 +87,11 @@ function setScreenText(operand) {
   screenText.innerText = operand;
 }
 
+function setScreenHistoryText() {
+  const screenHistoryText = document.getElementById('screen-history-text');
+  screenHistoryText.innerText = userInput.join(' ');
+}
+
 function operatorExists() {
   return isValidOperator(userInput[userInput.length - 1]);
 }
@@ -132,6 +137,7 @@ function handleNumberInput(value) {
 
 function deleteInput() {
   // removes the number to the far most right
+
   if (userInput.length < 1) {
     return;
   }
@@ -166,24 +172,23 @@ function convertToFloat() {
   } else if (userInput.length === 3) {
     if (!userInput[2].includes('.')) {
       userInput[2] += '.';
-      setScreenText(userInput[0]);
+      setScreenText(userInput[2]);
     }
   }
 }
 
-function btnClickHandler(e) {
+function logicHandler(value) {
   const screenHistoryText = document.getElementById('screen-history-text');
-  const value = e.target.textContent;
 
   if (isValidOperator(value)) {
     handleOperatorInput(value);
-    screenHistoryText.innerText = userInput.join(' ');
+    setScreenHistoryText();
     return;
   }
 
   if (isValidNumber(value)) {
     handleNumberInput(value);
-    screenHistoryText.innerText = userInput.join(' ');
+    setScreenHistoryText();
     return;
   }
 
@@ -193,6 +198,7 @@ function btnClickHandler(e) {
 
   if (value === '.') {
     convertToFloat();
+    setScreenHistoryText();
   }
 
   if (value === 'CLEAR') {
@@ -206,7 +212,31 @@ function btnClickHandler(e) {
   }
 }
 
+function btnClickHandler(e) {
+  const value = e.target.textContent;
+  logicHandler(value);
+}
+
 const btns = document.querySelectorAll('.buttons button');
 btns.forEach((btn) => {
   btn.addEventListener('click', btnClickHandler);
+});
+
+document.addEventListener('keydown', (e) => {
+  switch (e.key) {
+    case 'Enter':
+      logicHandler('=');
+      break;
+    case 'Backspace':
+      logicHandler('DEL');
+      break;
+    case '*':
+      logicHandler('X');
+      break;
+    case ',':
+      logicHandler('.');
+      break;
+    default:
+      logicHandler(e.key);
+  }
 });
