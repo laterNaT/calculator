@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Math&family=Quicksand:wght@300&display=swap');
+
+body {
+    font-family: 'Noto Sans Math', sans-serif;
+}
+
+main {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+    flex-direction: column;
+}
+
+.calculator {
+    border: 1px solid black;
+    padding: 1em;
+    border-radius: 1em;
+    background-color: ghostwhite;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 2em;
+    padding: 0.5em;
+    border-radius: 5px;
+    margin-bottom: 0.5em;
+    border: 1px solid black;
+    min-height: 104px;
+    max-width: 400px;
+}
+
+#screen-history-text {
+    font-size: 0.5em;
+    min-height: 24px;
+}
+
+.buttons {
+    width: 400px;
+    height: 500px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    font-size: 1.5em;
+
+}
+
+.div1 { grid-area: 1 / 1 / 2 / 3; }
+.div2 { grid-area: 1 / 3 / 2 / 4; }
+.div3 { grid-area: 1 / 4 / 2 / 5; }
+.div4 { grid-area: 2 / 1 / 3 / 5; }
+.div5 { grid-area: 3 / 1 / 4 / 5; }
+.div6 { grid-area: 4 / 1 / 5 / 5; }
+.div7 { grid-area: 5 / 1 / 6 / 3; }
+.div8 { grid-area: 5 / 3 / 6 / 4; }
+.div9 { grid-area: 5 / 4 / 6 / 5; }
+
+.buttons div {
+    display: flex;
+}
+
+.btn {
+    flex: 1;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+.btn-active {
+    box-shadow: inset 0px 0px 10px 0px #aba8a8;
+}
+
+#clear {
+    background-color: #b15454;
+}
+
+#delete {
+    background-color: #bf6d6d;
+}
+
+.operator {
+    background-color: beige;
+}
+
+#info-text {
+    font-family: 'Quicksand', sans-serif;
+    margin-top: 5em;
+    font-size: 0.8em;
+}
+
+.container {
+    display: flex;
+}
+
+#log {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    margin-left: 20px;
+    border: 1px solid black;
+    width: 300px;
+}
+
+#log > ul {
+    flex: 1;
+    list-style-type: none;
+}
+
+#log li {
+    margin-bottom: 0.5em;
+}
+
+#empty-log-btn {
+    border-radius: 5px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin: 10px;
+}
+
+#delete-icon {
+    color: red;
+}
