@@ -105,13 +105,17 @@ main {
     background-color: white;
     border-radius: 10px;
     margin-left: 20px;
-    padding: 10px 40px;
     border: 1px solid black;
     width: 300px;
 }
 
 #log > ul {
     flex: 1;
+    list-style-type: none;
+}
+
+#log li {
+    margin-bottom: 0.5em;
 }
 
 #empty-log-btn {
@@ -121,6 +125,7 @@ main {
     align-items: center;
     justify-content: center;
     gap: 5px;
+    margin: 10px;
 }
 
 #delete-icon {
