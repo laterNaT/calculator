@@ -267,6 +267,7 @@ document.addEventListener('keydown', (e) => {
   switch (e.key) {
     case 'Enter':
       logicHandler('=');
+      e.preventDefault();
       break;
     case 'Backspace':
       logicHandler('DEL');
